@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
                 <FileText className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
-                FinCalc<span className="text-emerald-600">Pro</span>
+                Bill<span className="text-emerald-600">Swift</span>
               </span>
             </Link>
             <Link href="/" className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all">
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">Privacy Policy</h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Your privacy is our top priority. FinCalcPro is designed to be completely private — 
+            Your privacy is our top priority. BillSwift is designed to be completely private — 
             we never store, track, or sell your financial data.
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              FinCalcPro operates on a strict "zero-data-collection" principle. Unlike most financial websites 
+              BillSwift operates on a strict "zero-data-collection" principle. Unlike most financial websites 
               that require accounts and store your sensitive information, we built our tools to function 
               completely client-side. This means your income, tax brackets, mortgage details, invoice data, 
               and employee payroll information never leave your device.
@@ -123,13 +123,13 @@ export default function PrivacyPolicyPage() {
                 <p>2. Calculations run → JavaScript (Client-Side)</p>
                 <p>3. PDF generated → html2canvas + jsPDF (Browser)</p>
                 <p>4. File downloaded → Direct to Your Device</p>
-                <p className="text-emerald-400 mt-2">✓ No data sent to FinCalcPro servers</p>
+                <p className="text-emerald-400 mt-2">✓ No data sent to BillSwift servers</p>
                 <p className="text-emerald-400">✓ No cloud storage or database</p>
                 <p className="text-emerald-400">✓ No third-party API calls with your data</p>
               </div>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              Our mortgage calculator, tax calculator, invoice maker, payslip generator, and all other tools 
+              Our mortgage calculator, tax calculator, invoice maker, paystub generator, and all other tools 
               use React state management that exists only in your browser's memory. When you refresh the page, 
               the state resets unless you have explicitly enabled browser storage.
             </p>
@@ -177,7 +177,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Children's Privacy (COPPA Compliance)</h2>
             <p className="text-slate-600 leading-relaxed">
-              FinCalcPro is not intended for children under 13 years of age. We do not knowingly collect 
+              BillSwift is not intended for children under 13 years of age. We do not knowingly collect 
               personal information from children under 13. If you are a parent or guardian and believe 
               your child has provided us with personal information, please contact us immediately. 
               If we become aware that we have collected personal information from children under 13 
@@ -216,7 +216,7 @@ export default function PrivacyPolicyPage() {
               We may update this Privacy Policy from time to time to reflect changes in our practices, 
               legal requirements, or tool functionality. The updated policy will be posted on this page 
               with a revised "Last Updated" date. We encourage you to review this policy periodically. 
-              Your continued use of FinCalcPro after any changes constitutes acceptance of the updated policy.
+              Your continued use of BillSwift after any changes constitutes acceptance of the updated policy.
             </p>
           </section>
 
@@ -229,7 +229,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="flex items-center gap-3 text-slate-700">
                 <Mail className="h-5 w-5 text-emerald-600" />
-                <span className="font-medium">privacy@fincalcpro.com</span>
+                <span className="font-medium">support@billswift.com</span>
               </div>
               <p className="text-sm text-slate-500 mt-3">
                 We aim to respond to all privacy-related inquiries within 48 hours. 
@@ -240,9 +240,9 @@ export default function PrivacyPolicyPage() {
 
           <div className="border-t border-slate-200 pt-8 mt-10">
             <p className="text-sm text-slate-500 text-center">
-              By using FinCalcPro, you acknowledge that you have read and understood this Privacy Policy. 
+              By using BillSwift, you acknowledge that you have read and understood this Privacy Policy. 
               <br />
-              © 2026 FinCalcPro. All rights reserved.
+              © 2026 BillSwift. All rights reserved.
             </p>
           </div>
         </div>

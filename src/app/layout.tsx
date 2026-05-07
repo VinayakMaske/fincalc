@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FinCalc Pro | Free Financial Calculators & Business Tools",
+  title: "BillSwift | Free Financial Calculators & Business Tools",
   description:
-    "Free online financial calculators for USA users. Calculate mortgage, loan EMI, compound interest, ROI, salary, tax, and more. Plus free invoice maker and payslip generator for freelancers and small businesses.",
+    "Free online financial calculators for USA users. Calculate mortgage, loan EMI, compound interest, ROI, salary, tax, and more. Plus free invoice maker and paystub generator for freelancers and small businesses.",
   keywords:
-    "financial calculator, mortgage calculator, loan calculator, compound interest calculator, ROI calculator, salary calculator, tax calculator, invoice maker, payslip generator, free tools USA",
+    "financial calculator, mortgage calculator, loan calculator, compound interest calculator, ROI calculator, salary calculator, tax calculator, invoice maker, paystub generator, free tools USA",
   openGraph: {
-    title: "FinCalc Pro | Free Financial Calculators & Business Tools",
+    title: "BillSwift | Free Financial Calculators & Business Tools",
     description:
       "Free online financial calculators and business tools for USA users. Professional, fast, and easy to use.",
     type: "website",

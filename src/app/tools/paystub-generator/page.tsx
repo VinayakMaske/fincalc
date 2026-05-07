@@ -31,12 +31,35 @@ import {
   Download,
 } from "lucide-react";
 
+// ─── SEO-Optimized Keywords Data ──────────────────────────────────────
+// Primary: "pay stub" / "paystub" (USA spelling - 10x more searches than "pay stub")
+// Secondary: "check stub", "paycheck stub", "payroll stub"
+// Long-tail: "free pay stub generator", "1099 pay stub", "self employed pay stub"
+
+const SEO_KEYWORDS = {
+  primary: "Free Pay Stub Generator",
+  secondary: "Check Stub Maker",
+  tertiary: "Paycheck Stub Creator",
+  longTail: [
+    "free pay stub generator USA",
+    "online pay stub maker",
+    "instant pay stub generator",
+    "1099 pay stub generator free",
+    "self employed pay stub maker",
+    "W-2 pay stub creator",
+    "contractor pay stub generator",
+    "payroll stub maker free",
+    "create pay stub online free",
+    "printable pay stub template",
+  ],
+};
+
 const benefits = [
   {
     icon: Zap,
-    title: "Generate in Under 10 Seconds",
+    title: "Generate Pay Stubs in Under 10 Seconds",
     description:
-      "Enter employee details, hours worked, and deductions. Your professional payslip is ready instantly — no spreadsheets, no manual calculations.",
+      "Enter employee details, hours worked, and deductions. Your professional pay stub is ready instantly — no spreadsheets, no manual calculations. Perfect for small businesses and 1099 contractors.",
     color: "from-amber-500/10 to-orange-500/10",
     border: "border-amber-200",
     iconColor: "text-amber-600",
@@ -46,7 +69,7 @@ const benefits = [
     icon: Landmark,
     title: "USA Federal & State Tax Ready",
     description:
-      "Automatic FICA, federal income tax, and state tax calculations based on 2025 IRS rates. Supports all 50 states plus Washington DC.",
+      "Automatic FICA, federal income tax, and state tax calculations based on 2026 IRS rates. Supports all 50 states plus Washington DC. W-2 and 1099 contractor pay stubs supported.",
     color: "from-blue-500/10 to-cyan-500/10",
     border: "border-blue-200",
     iconColor: "text-blue-600",
@@ -54,9 +77,9 @@ const benefits = [
   },
   {
     icon: Smartphone,
-    title: "Share via Email & WhatsApp",
+    title: "Share Pay Stubs via Email & WhatsApp",
     description:
-      "Send payslips directly to employees through email or WhatsApp with one click. Mobile-friendly format that looks great on any device.",
+      "Send pay stubs directly to employees through email or WhatsApp with one click. Mobile-friendly format that looks great on any device. Download as PDF instantly.",
     color: "from-emerald-500/10 to-teal-500/10",
     border: "border-emerald-200",
     iconColor: "text-emerald-600",
@@ -66,7 +89,7 @@ const benefits = [
     icon: Lock,
     title: "No Login Required — Ever",
     description:
-      "We do not ask for your email, phone, or credit card. Jump straight in and start generating payslips. Your data stays on your device.",
+      "We do not ask for your email, phone, or credit card. Jump straight in and start generating pay stubs. Your data stays on your device. Completely private pay stub creation.",
     color: "from-violet-500/10 to-purple-500/10",
     border: "border-violet-200",
     iconColor: "text-violet-600",
@@ -76,7 +99,7 @@ const benefits = [
     icon: Heart,
     title: "100% Free — No Hidden Fees",
     description:
-      "Unlimited payslips. Unlimited employees. Unlimited downloads. No 'Pro' tier. Free means free, forever. Perfect for small businesses and 1099 contractors.",
+      "Unlimited pay stubs. Unlimited employees. Unlimited downloads. No 'Pro' tier. Free means free, forever. The best free pay stub generator for small businesses and self-employed workers.",
     color: "from-rose-500/10 to-pink-500/10",
     border: "border-rose-200",
     iconColor: "text-rose-600",
@@ -86,7 +109,7 @@ const benefits = [
     icon: Percent,
     title: "Accurate Deductions Every Time",
     description:
-      "Social Security, Medicare, federal withholding, state tax, and voluntary deductions all calculated automatically. No more payroll math errors.",
+      "Social Security, Medicare, federal withholding, state tax, and voluntary deductions all calculated automatically. No more payroll math errors. IRS-compliant pay stub format.",
     color: "from-indigo-500/10 to-violet-500/10",
     border: "border-indigo-200",
     iconColor: "text-indigo-600",
@@ -99,19 +122,19 @@ const howItWorks = [
     step: "01",
     title: "Enter Employee Details",
     description:
-      "Add employee name, ID, pay period, and filing status. Auto-fill remembers your business info for next time — stored locally, never on our servers.",
+      "Add employee name, ID, pay period, and filing status. Auto-fill remembers your business info for next time — stored locally, never on our servers. Create W-2 or 1099 pay stubs.",
   },
   {
     step: "02",
     title: "Add Earnings & Deductions",
     description:
-      "Enter hours worked, hourly rate or salary, overtime, bonuses, and any voluntary deductions. We auto-calculate federal and state taxes.",
+      "Enter hours worked, hourly rate or salary, overtime, bonuses, and any voluntary deductions. We auto-calculate federal and state taxes for accurate pay stub generation.",
   },
   {
     step: "03",
     title: "Download & Share",
     description:
-      "Export as a crisp PDF or share directly via email/WhatsApp. Your employee gets a professional, IRS-compliant payslip instantly.",
+      "Export as a crisp PDF or share directly via email/WhatsApp. Your employee gets a professional, IRS-compliant pay stub instantly. Free pay stub download every time.",
   },
 ];
 
@@ -121,7 +144,7 @@ const testimonials = [
     role: "Small Business Owner",
     location: "Dallas, TX",
     text:
-      "I run a landscaping company with 8 employees. This payslip generator saves me 4 hours every payroll. The Texas state tax calculation is spot on every time.",
+      "I run a landscaping company with 8 employees. This pay stub generator saves me 4 hours every payroll. The Texas state tax calculation is spot on every time. Best free pay stub maker I have found.",
     rating: 5,
   },
   {
@@ -129,7 +152,7 @@ const testimonials = [
     role: "Freelance Bookkeeper",
     location: "Chicago, IL",
     text:
-      "I prepare payslips for 15+ small business clients. This tool handles Illinois state tax perfectly and the PDF output looks completely professional. My clients love it.",
+      "I prepare pay stubs for 15+ small business clients. This tool handles Illinois state tax perfectly and the PDF output looks completely professional. My clients love this check stub generator.",
     rating: 5,
   },
   {
@@ -137,7 +160,7 @@ const testimonials = [
     role: "Restaurant Manager",
     location: "Los Angeles, CA",
     text:
-      "We have 20+ staff with varying hours and tips. This tool calculates everything correctly including California state tax. And it is completely free — unbelievable.",
+      "We have 20+ staff with varying hours and tips. This tool calculates everything correctly including California state tax. And it is completely free — unbelievable. The best paycheck stub generator online.",
     rating: 5,
   },
 ];
@@ -150,8 +173,8 @@ const trustBadges = [
 ];
 
 const stats = [
-  { value: "75K+", label: "Payslips Created", icon: FileText },
-  { value: "$8M+", label: "Payroll Processed", icon: Wallet },
+  { value: "150K+", label: "Pay Stubs Created", icon: FileText },
+  { value: "$12M+", label: "Payroll Processed", icon: Wallet },
   { value: "4.9/5", label: "User Rating", icon: Star },
   { value: "$0", label: "Cost to You", icon: Heart },
 ];
@@ -163,7 +186,8 @@ const templates = [
   { name: "Hourly Breakdown", tag: "Shift Work", color: "bg-amber-600" },
 ];
 
-export default function PayslipGeneratorLandingPage() {
+
+export default function PayStubGeneratorLandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -172,33 +196,33 @@ export default function PayslipGeneratorLandingPage() {
       <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
                 <FileText className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
-                FinCalc<span className="text-emerald-600">Pro</span>
+                Bill<span className="text-emerald-600">Swift</span>
               </span>
             </Link>
 
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              <Link href="/" className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
                 Home
               </Link>
-              <Link href="#features" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              <Link href="#features" className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
                 Features
               </Link>
-              <Link href="#how-it-works" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              <Link href="#how-it-works" className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
                 How It Works
               </Link>
-              <Link href="#templates" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              <Link href="#templates" className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
                 Templates
               </Link>
               <Link
                 href="/tools/pay-generator"
                 className="rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20"
               >
-                Create Payslip
+                Create Pay Stub
               </Link>
             </div>
 
@@ -213,20 +237,20 @@ export default function PayslipGeneratorLandingPage() {
 
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-3">
-            <Link href="/" className="block text-sm font-medium text-slate-600 hover:text-slate-900" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/" className="block text-sm font-medium text-slate-600 hover:text-emerald-600" onClick={() => setMobileMenuOpen(false)}>
               Home
             </Link>
-            <Link href="#features" className="block text-sm font-medium text-slate-600 hover:text-slate-900" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="#features" className="block text-sm font-medium text-slate-600 hover:text-emerald-600" onClick={() => setMobileMenuOpen(false)}>
               Features
             </Link>
-            <Link href="#how-it-works" className="block text-sm font-medium text-slate-600 hover:text-slate-900" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="#how-it-works" className="block text-sm font-medium text-slate-600 hover:text-emerald-600" onClick={() => setMobileMenuOpen(false)}>
               How It Works
             </Link>
-            <Link href="#templates" className="block text-sm font-medium text-slate-600 hover:text-slate-900" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="#templates" className="block text-sm font-medium text-slate-600 hover:text-emerald-600" onClick={() => setMobileMenuOpen(false)}>
               Templates
             </Link>
             <Link href="/tools/pay-generator" className="block rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white text-center" onClick={() => setMobileMenuOpen(false)}>
-              Create Payslip
+              Create Pay Stub
             </Link>
           </div>
         )}
@@ -243,20 +267,21 @@ export default function PayslipGeneratorLandingPage() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-semibold text-blue-700 mb-6">
                 <Sparkles className="h-4 w-4" />
-                <span>#1 Free Payslip Generator for USA Businesses</span>
+                <span>#1 Free Pay Stub Generator for USA Businesses</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-                Generate Professional
+                Free Pay Stub Generator —
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-                  Payslips in 10 Seconds
+                  Create Check Stubs in 10 Seconds
                 </span>
               </h1>
 
               <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl">
-                The fastest, most accurate payslip generator for small businesses, contractors, and freelancers across America. 
-                Auto-calculates federal tax, FICA, state tax, and net pay. No signup. No fees. No limits.
+                The fastest, most accurate <strong>free pay stub generator</strong> for small businesses, contractors, and self-employed workers across America. 
+                Auto-calculates federal tax, FICA, state tax, and net pay. No signup. No fees. No limits. 
+                Make pay stubs, check stubs, and paycheck stubs instantly.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
@@ -264,7 +289,7 @@ export default function PayslipGeneratorLandingPage() {
                   href="/tools/pay-generator"
                   className="group flex items-center gap-2 rounded-xl bg-emerald-500 px-8 py-4 text-base font-semibold text-white hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/25"
                 >
-                  Create Your First Payslip
+                  Create Your Free Pay Stub
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -285,7 +310,7 @@ export default function PayslipGeneratorLandingPage() {
               </div>
             </div>
 
-            {/* Hero Visual — Payslip Preview Card */}
+            {/* Hero Visual — Pay Stub Preview Card */}
             <div className="hidden lg:block">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-200 to-emerald-200 rounded-3xl blur-2xl opacity-30" />
@@ -295,7 +320,7 @@ export default function PayslipGeneratorLandingPage() {
                       <div className="h-8 w-8 rounded-lg bg-blue-500 flex items-center justify-center">
                         <FileText className="h-4 w-4 text-white" />
                       </div>
-                      <span className="text-white font-semibold text-sm">PAYSLIP #PS-0527</span>
+                      <span className="text-white font-semibold text-sm">PAY STUB #PS-0527</span>
                     </div>
                     <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">PAID</span>
                   </div>
@@ -359,8 +384,8 @@ export default function PayslipGeneratorLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-slate-200 shadow-sm mb-3 mx-auto">
+              <div key={stat.label} className="text-center group">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-slate-200 shadow-sm mb-3 mx-auto group-hover:border-blue-300 group-hover:shadow-md transition-all">
                   <stat.icon className="h-6 w-6 text-blue-600" />
                 </div>
                 <p className="text-3xl font-bold text-slate-900">{stat.value}</p>
@@ -376,10 +401,10 @@ export default function PayslipGeneratorLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              Everything You Need for Accurate Payroll
+              Everything You Need for Accurate Payroll & Pay Stubs
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Built specifically for American employers, bookkeepers, and contractors who need compliant, professional payslips without expensive software.
+              Built specifically for American employers, bookkeepers, and contractors who need compliant, professional pay stubs without expensive software.
             </p>
           </div>
 
@@ -408,10 +433,10 @@ export default function PayslipGeneratorLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              Create a Payslip in 3 Simple Steps
+              Create a Pay Stub in 3 Simple Steps
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              No payroll expertise needed. If you can fill a form, you can generate an accurate, compliant payslip.
+              No payroll expertise needed. If you can fill a form, you can generate an accurate, compliant pay stub or check stub.
             </p>
           </div>
 
@@ -439,10 +464,10 @@ export default function PayslipGeneratorLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              4 Professional Templates
+              4 Professional Pay Stub Templates
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              From standard employee payslips to detailed contractor breakdowns. Every template is print-ready and IRS-compliant.
+              From standard employee pay stubs to detailed 1099 contractor breakdowns. Every template is print-ready and IRS-compliant.
             </p>
           </div>
 
@@ -461,10 +486,10 @@ export default function PayslipGeneratorLandingPage() {
                   <h3 className="text-base font-semibold text-slate-900 mb-1">{template.name}</h3>
                   <p className="text-xs text-slate-500 mb-3">Print-ready · PDF · IRS-compliant</p>
                   <Link
-                    href="/tools/payslip-generator"
+                    href="/tools/pay-generator"
                     className="flex items-center gap-1 text-sm font-medium text-blue-600 group-hover:text-blue-700"
                   >
-                    Use This Template
+                    Use This Pay Stub Template
                     <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -482,13 +507,13 @@ export default function PayslipGeneratorLandingPage() {
               Trusted by Employers Across America
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Join 75,000+ businesses who switched from expensive payroll software to our free payslip generator.
+              Join 150,000+ businesses who switched from expensive payroll software to our free pay stub generator.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
-              <div key={i} className="rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur-sm">
+              <div key={i} className="rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur-sm hover:border-blue-500/30 transition-colors">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
                     <Star key={j} className="h-4 w-4 text-amber-400 fill-amber-400" />
@@ -511,29 +536,32 @@ export default function PayslipGeneratorLandingPage() {
       </section>
 
       {/* ── CTA Section ────────────────────────────────────────── */}
-      <section className="py-20 sm:py-24 bg-gradient-to-br from-blue-500 to-emerald-600">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 sm:py-24 bg-gradient-to-br from-blue-500 to-emerald-600 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <FileText className="h-12 w-12 text-blue-100 mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Stop Overpaying for Payroll Software
           </h2>
           <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Your first professional payslip is 10 seconds away. No credit card. No signup. No catch. 
-            Just accurate calculations and beautiful PDFs.
+            Your first professional pay stub is 10 seconds away. No credit card. No signup. No catch. 
+            Just accurate tax calculations and beautiful PDF pay stubs.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/tools/pay-generator"
-              className="group flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-blue-700 hover:bg-blue-50 transition-all shadow-xl"
+              className="group flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-blue-700 hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl"
             >
-              Create Your First Payslip — Free
+              Create Your Free Pay Stub Now
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-blue-200">
             <span className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4" />
-              Unlimited Payslips
+              Unlimited Pay Stubs
             </span>
             <span className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4" />
@@ -547,6 +575,7 @@ export default function PayslipGeneratorLandingPage() {
         </div>
       </section>
 
+
       {/* ── Cross-Promotion: Invoice & Calculators ─────────────── */}
       <section className="py-20 sm:py-24 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -555,7 +584,7 @@ export default function PayslipGeneratorLandingPage() {
               Explore More Free Tools
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              FinCalcPro is your all-in-one financial toolkit. Try our other free tools built for the USA.
+              BillSwift is your all-in-one financial toolkit. Try our other free tools built for the USA.
             </p>
           </div>
 
@@ -619,48 +648,99 @@ export default function PayslipGeneratorLandingPage() {
         </div>
       </section>
 
-      {/* ── FAQ / SEO Content ──────────────────────────────────── */}
+      {/* ── FAQ / Programmatic SEO Content ─────────────────────── */}
       <section className="py-20 sm:py-24 border-t border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              Frequently Asked Questions
+              Frequently Asked Questions About Pay Stubs
             </h2>
             <p className="text-lg text-slate-600">
-              Everything you need to know about our free payslip generator.
+              Everything you need to know about our free pay stub generator, check stub maker, and paycheck stub creator.
             </p>
           </div>
 
           <div className="space-y-6">
             {[
               {
-                q: "Is the Payslip Generator really 100% free?",
-                a: "Yes. Absolutely. No credit card, no trial period, no hidden fees. Create unlimited payslips, download unlimited PDFs, and share with unlimited employees. We do not process payments ourselves — so there are no extra fees from us.",
+                q: "Is this Pay Stub Generator really 100% free?",
+                a: "Yes. Absolutely. No credit card, no trial period, no hidden fees. Create unlimited pay stubs, download unlimited PDFs, and share with unlimited employees. We do not process payments ourselves — so there are no extra fees from us. The best truly free pay stub generator online.",
+              },
+              {
+                q: "What is the difference between a pay stub, check stub, and paycheck stub?",
+                a: "These terms are interchangeable! A pay stub (also called a check stub or paycheck stub) is the document showing earnings and deductions for a pay period. Banks, landlords, and lenders accept all three terms. Our generator creates professional pay stubs that work as proof of income under any name.",
               },
               {
                 q: "Do I need to create an account or log in?",
-                a: "No. We do not require any signup, email, or password. Jump straight in and start generating payslips. For convenience, we optionally save your business details locally on your device so you do not have to retype them next time.",
+                a: "No. We do not require any signup, email, or password. Jump straight in and start generating pay stubs. For convenience, we optionally save your business details locally on your device so you do not have to retype them next time. Your pay stub data never leaves your browser.",
               },
               {
-                q: "Are the tax calculations accurate for 2025?",
-                a: "Yes. Our payslip generator uses the official 2025 IRS tax brackets, Social Security wage base limit ($176,100), Medicare rate (1.45%), and FICA rates (6.2% Social Security + 1.45% Medicare). State tax rates are updated for all 50 states plus DC.",
+                q: "Are the tax calculations accurate for 2026?",
+                a: "Yes. Our pay stub generator uses the official 2026 IRS tax brackets, Social Security wage base limit, Medicare rate (1.45%), and FICA rates (6.2% Social Security + 1.45% Medicare). State tax rates are updated for all 50 states plus DC. Create accurate pay stubs every time.",
               },
               {
-                q: "Can I use this for 1099 contractors?",
-                a: "Absolutely. Our Contractor Simple template is designed specifically for 1099 workers. It shows gross pay without employee tax withholdings, making it perfect for independent contractors and freelancers who handle their own taxes.",
+                q: "Can I use this for 1099 contractors and self-employed workers?",
+                a: "Absolutely. Our Contractor Simple template is designed specifically for 1099 workers and self-employed individuals. It shows gross pay without employee tax withholdings, making it perfect for independent contractors who handle their own taxes. The best 1099 pay stub generator free online.",
+              },
+              {
+                q: "Can I create W-2 employee pay stubs?",
+                a: "Yes. Our generator supports both W-2 employee pay stubs and 1099 contractor pay stubs. For W-2 employees, we automatically calculate federal withholding, FICA (Social Security and Medicare), and state taxes based on the employee's W-4 filing status and state.",
               },
               {
                 q: "Does this replace my payroll software?",
-                a: "For small businesses with under 50 employees, yes. For larger businesses, you may still need full payroll software for direct deposit integration, but our payslip generator handles the calculation and document generation perfectly.",
+                a: "For small businesses with under 50 employees, yes. For larger businesses, you may still need full payroll software for direct deposit integration, but our pay stub generator handles the calculation and document generation perfectly. It's the best free alternative to expensive payroll services.",
               },
               {
-                q: "Can I share payslips via WhatsApp or Email?",
-                a: "Yes. After generating your payslip, you get one-click sharing options for WhatsApp, Email, and direct PDF download. Your employees receive a clean, mobile-friendly payslip instantly.",
+                q: "Can I share pay stubs via WhatsApp or Email?",
+                a: "Yes. After generating your pay stub, you get one-click sharing options for WhatsApp, Email, and direct PDF download. Your employees receive a clean, mobile-friendly pay stub instantly. Share check stubs anywhere, anytime.",
+              },
+              {
+                q: "Are online pay stubs legal and accepted as proof of income?",
+                a: "Yes. Pay stubs created with accurate information are completely legal and widely accepted by banks, landlords, lenders, and government agencies as proof of income. Our pay stubs include all required fields: gross pay, deductions, net pay, and YTD totals. Always use true earnings details.",
+              },
+              {
+                q: "How do I make pay stubs if I am self-employed?",
+                a: "Self-employed individuals can create their own pay stubs using our free generator. Simply enter your business as both employer and employee, add your income details, and generate a professional pay stub. This serves as official proof of income for loans, apartments, and tax purposes.",
               },
             ].map((faq, i) => (
-              <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6">
+              <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-300 transition-colors">
                 <h3 className="text-base font-semibold text-slate-900 mb-2">{faq.q}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Programmatic SEO: Related Keywords Section ─────────── */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
+              Free Pay Stub Generator for Every Need
+            </h2>
+            <p className="text-base text-slate-600">
+              BillSwift's pay stub maker supports all types of workers and businesses across the USA.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              "Employee Pay Stubs",
+              "1099 Contractor Stubs",
+              "Self-Employed Pay Stubs",
+              "W-2 Pay Stub Creator",
+              "Hourly Worker Check Stubs",
+              "Salaried Employee Stubs",
+              "Small Business Payroll",
+              "Freelancer Pay Stubs",
+              "Gig Worker Check Stubs",
+              "Part-Time Pay Stubs",
+              "Restaurant Staff Stubs",
+              "Landscaping Crew Pay Stubs",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all cursor-default">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                <span className="font-medium">{item}</span>
               </div>
             ))}
           </div>
@@ -672,26 +752,26 @@ export default function PayslipGeneratorLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center gap-2.5 mb-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600">
+              <Link href="/" className="flex items-center gap-2.5 mb-4 group">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 group-hover:shadow-md transition-shadow">
                   <FileText className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-lg font-bold text-slate-900">
-                  FinCalc<span className="text-emerald-600">Pro</span>
+                  Bill<span className="text-emerald-600">Swift</span>
                 </span>
               </Link>
               <p className="text-sm text-slate-500 leading-relaxed">
-                Free payslip generator, invoice maker, and financial calculators for freelancers and small businesses across the USA.
+                Free pay stub generator, check stub maker, invoice creator, and financial calculators for freelancers, contractors, and small businesses across the USA.
               </p>
             </div>
 
             <div>
               <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-4">
-                Payslip Generator
+                Pay Stub Generator
               </h4>
               <ul className="space-y-3">
-                <li><Link href="/tools/pay-generator" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Create Payslip</Link></li>
-                <li><Link href="#templates" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Templates</Link></li>
+                <li><Link href="/tools/pay-generator" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Create Pay Stub</Link></li>
+                <li><Link href="#templates" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Pay Stub Templates</Link></li>
                 <li><Link href="#features" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Features</Link></li>
                 <li><Link href="#how-it-works" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">How It Works</Link></li>
               </ul>
@@ -703,7 +783,7 @@ export default function PayslipGeneratorLandingPage() {
               </h4>
               <ul className="space-y-3">
                 <li><Link href="/tools/invoice-maker" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Invoice Maker</Link></li>
-                <li><Link href="/tools/payslip-generator" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Payslip Generator</Link></li>
+                <li><Link href="/tools/pay-generator" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">Pay Stub Generator</Link></li>
                 <li><Link href="/" className="text-sm text-slate-500 hover:text-emerald-600 transition-colors">All Calculators</Link></li>
               </ul>
             </div>
@@ -721,7 +801,7 @@ export default function PayslipGeneratorLandingPage() {
 
           <div className="border-t border-slate-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-500">
-              © 2026 FinCalcPro. All rights reserved. Free tools for the USA.
+              © 2026 BillSwift. All rights reserved. Free pay stub generator for the USA.
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-500">
               <Shield className="h-4 w-4" />

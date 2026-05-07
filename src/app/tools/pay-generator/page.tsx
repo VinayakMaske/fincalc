@@ -1,3 +1,4 @@
+// src/app/tools/payslip-generator/page.tsx
 "use client";
 
 import { useState, useRef, useMemo, useCallback } from "react";
@@ -9,6 +10,29 @@ import {
   CheckCircle2, ChevronDown, X, Sparkles, Palette, Eye, PenLine, Loader2,
   Calculator, Receipt, Star, ChevronRight, ToggleLeft, ToggleRight,
 } from "lucide-react";
+
+// ─── SEO-Optimized Keywords Data ──────────────────────────────────────
+// Primary: "pay stub" / "paystub" (USA spelling - 10x more searches than "pay stub")
+// Secondary: "check stub", "paycheck stub", "payroll stub"
+// Long-tail: "free pay stub generator", "1099 pay stub", "self employed pay stub"
+
+const SEO_KEYWORDS = {
+  primary: "Free Pay Stub Generator",
+  secondary: "Check Stub Maker",
+  tertiary: "Paycheck Stub Creator",
+  longTail: [
+    "free pay stub generator USA",
+    "online pay stub maker",
+    "instant pay stub generator",
+    "1099 pay stub generator free",
+    "self employed pay stub maker",
+    "W-2 pay stub creator",
+    "contractor pay stub generator",
+    "payroll stub maker free",
+    "create pay stub online free",
+    "printable pay stub template",
+  ],
+};
 
 type FilingStatus = "single" | "married_joint" | "married_separate" | "head_household" | "not_applicable";
 
@@ -97,6 +121,7 @@ function calculateFederalTax(gross: number, filingStatus: FilingStatus): number 
   }
   return tax / 52;
 }
+
 
 export default function PayslipGeneratorPage() {
   const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
@@ -262,9 +287,9 @@ export default function PayslipGeneratorPage() {
     const blob = await generatePDF(payslipRef); if (!blob) return;
     const file = new File([blob], `Payslip-${data.employeeName || "Employee"}.pdf`, { type: "application/pdf" });
     const companyName = data.companyName || "My Company";
-    const text = `Hey, here is your payslip from ${companyName}. Pay Period: ${formatDate(data.payPeriodStart)} - ${formatDate(data.payPeriodEnd)}. Net Pay: ${formatCurrency(netPay)}`;
+    const text = `Hey, here is your pay stub from ${companyName}. Pay Period: ${formatDate(data.payPeriodStart)} - ${formatDate(data.payPeriodEnd)}. Net Pay: ${formatCurrency(netPay)}`;
     if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-      try { await navigator.share({ files: [file], title: `Payslip - ${data.employeeName}`, text }); return; } catch {}
+      try { await navigator.share({ files: [file], title: `Pay Stub - ${data.employeeName}`, text }); return; } catch {}
     }
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
   }
@@ -273,16 +298,17 @@ export default function PayslipGeneratorPage() {
     const blob = await generatePDF(payslipRef); if (!blob) return;
     const file = new File([blob], `Payslip-${data.employeeName || "Employee"}.pdf`, { type: "application/pdf" });
     const companyName = data.companyName || "My Company";
-    const subject = `Payslip - ${formatDate(data.payPeriodStart)} to ${formatDate(data.payPeriodEnd)} from ${companyName}`;
-    const body = `Hey ${data.employeeName || "there"},%0D%0A%0D%0APlease find your payslip attached for the pay period ${formatDate(data.payPeriodStart)} - ${formatDate(data.payPeriodEnd)}.%0D%0A%0D%0ANet Pay: ${formatCurrency(netPay)}%0D%0AGross Pay: ${formatCurrency(grossPay)}%0D%0A%0D%0AThank you!`;
+    const subject = `Pay Stub - ${formatDate(data.payPeriodStart)} to ${formatDate(data.payPeriodEnd)} from ${companyName}`;
+    const body = `Hey ${data.employeeName || "there"},%0D%0A%0D%0APlease find your pay stub attached for the pay period ${formatDate(data.payPeriodStart)} - ${formatDate(data.payPeriodEnd)}.%0D%0A%0D%0ANet Pay: ${formatCurrency(netPay)}%0D%0AGross Pay: ${formatCurrency(grossPay)}%0D%0A%0D%0AThank you!`;
     if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-      try { await navigator.share({ files: [file], title: subject, text: `Payslip from ${companyName}` }); return; } catch {}
+      try { await navigator.share({ files: [file], title: subject, text: `Pay stub from ${companyName}` }); return; } catch {}
     }
     window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${body}`);
   }
 
   const handleTogglePreview = useCallback(() => { setActiveTab("preview"); setShowPreviewModal(true); }, []);
   const handleToggleEdit = useCallback(() => { setActiveTab("edit"); setShowPreviewModal(false); }, []);
+
 
   const PayslipPreviewContent = ({ forPrint = false, refProp }: { forPrint?: boolean; refProp?: React.Ref<HTMLDivElement> }) => {
     const t = template;
@@ -296,7 +322,7 @@ export default function PayslipGeneratorPage() {
             <div className="flex items-center gap-5">
               {data.logo && <img src={data.logo} alt="Logo" className="h-20 w-20 object-contain rounded-xl" style={{ backgroundColor: "rgba(255,255,255,0.1)", padding: "8px" }} />}
               <div>
-                <h1 className="text-3xl font-bold tracking-tight" style={{ color: t.headerText }}>PAYSLIP</h1>
+                <h1 className="text-3xl font-bold tracking-tight" style={{ color: t.headerText }}>PAY STUB</h1>
                 <p className="text-sm opacity-70 mt-1 tracking-wider">{data.companyName || "Your Company"}</p>
               </div>
             </div>
@@ -467,13 +493,14 @@ export default function PayslipGeneratorPage() {
         {/* Footer */}
         <div className="px-8 py-5 border-t" style={{ borderColor: t.border, backgroundColor: t.footerBg }}>
           <div className="flex items-center justify-between">
-            <p className="text-xs" style={{ color: t.secondary }}>This payslip was generated on {formatDate(today)} {data.filingStatus !== "not_applicable" && `· Filing Status: ${data.filingStatus.replace("_", " " )}`}</p>
-            <Link href="/" className="flex items-center gap-2 text-xs font-semibold hover:opacity-80 transition-opacity" style={{ color: t.accent }}><FileText className="h-3 w-3" />Made using FinCalcPro</Link>
+            <p className="text-xs" style={{ color: t.secondary }}>This pay stub was generated on {formatDate(today)} {data.filingStatus !== "not_applicable" && `· Filing Status: ${data.filingStatus.replace("_", " " )}`}</p>
+            <Link href="/" className="flex items-center gap-2 text-xs font-semibold hover:opacity-80 transition-opacity" style={{ color: t.accent }}><FileText className="h-3 w-3" />Made using BillSwift</Link>
           </div>
         </div>
       </div>
     );
   };
+
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -484,7 +511,7 @@ export default function PayslipGeneratorPage() {
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20">
                 <FileText className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900">FinCalc<span className="text-emerald-600">Pro</span></span>
+              <span className="text-xl font-bold tracking-tight text-slate-900">Bill<span className="text-emerald-600">Swift</span></span>
             </Link>
             <div className="flex items-center gap-3">
               <button onClick={() => setShowTemplatePicker(!showTemplatePicker)} className="hidden sm:flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all">
@@ -524,7 +551,7 @@ export default function PayslipGeneratorPage() {
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => { setShowPreviewModal(false); setActiveTab("edit"); }} />
           <div className="relative bg-slate-100 rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-slate-200">
-              <div className="flex items-center gap-3"><Eye className="h-5 w-5 text-emerald-600" /><h2 className="text-lg font-semibold text-slate-900">Payslip Preview</h2><span className="text-sm text-slate-500">{template.name}</span></div>
+              <div className="flex items-center gap-3"><Eye className="h-5 w-5 text-emerald-600" /><h2 className="text-lg font-semibold text-slate-900">Pay Stub Preview</h2><span className="text-sm text-slate-500">{template.name}</span></div>
               <div className="flex items-center gap-2">
                 <button onClick={downloadPDF} disabled={isDownloading} className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 disabled:opacity-50">{isDownloading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}{isDownloading ? "Generating..." : "Download PDF"}</button>
                 <button onClick={() => { setShowPreviewModal(false); setActiveTab("edit"); }} className="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"><X className="h-5 w-5" /></button>
@@ -822,7 +849,7 @@ export default function PayslipGeneratorPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Explore More Free Tools</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">FinCalcPro is your all-in-one financial toolkit. Try our other free tools built for the USA.</p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">BillSwift is your all-in-one financial toolkit. Try our other free tools built for the USA.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Link href="/tools/invoice-maker" className="group relative overflow-hidden rounded-2xl border border-emerald-200 bg-white p-8 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">

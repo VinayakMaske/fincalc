@@ -208,8 +208,8 @@ const newTools = [
     badge: "NEW",
   },
   {
-    slug: "payslip-generator",
-    title: "Payslip Generator",
+    slug: "paystub-generator",
+    title: "Paystub Generator",
     description:
       "Generate detailed payslips with federal deductions, taxes, and net pay. Perfect for small businesses and 1099 contractors.",
     icon: FileText,
@@ -265,7 +265,7 @@ const quickLinks = [
   { label: "Refinance", href: "/tools/refinance-calculator" },
   { label: "Rent vs. Buy", href: "/tools/rent-vs-buy" },
   { label: "Invoice Maker", href: "/tools/invoice-maker" },
-  { label: "Payslip Generator", href: "/tools/payslip-generator" },
+  { label: "Paystub Generator", href: "/tools/paystub-generator" },
 ];
 
 export default function LandingPage() {
@@ -290,7 +290,7 @@ export default function LandingPage() {
                 <Calculator className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
-                FinCalc<span className="text-emerald-600">Pro</span>
+                Bill<span className="text-emerald-600">Swift</span>
               </span>
             </Link>
 
@@ -371,7 +371,7 @@ export default function LandingPage() {
 
               <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
                 12+ professional-grade calculators for mortgages, loans, taxes, retirement, and more.
-                Plus free invoice maker & payslip generator for freelancers and small businesses across the USA.
+                Plus free invoice maker & paystub generator for freelancers and small businesses across the USA.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -476,7 +476,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              Why Professionals Choose FinCalcPro
+              Why Professionals Choose BillSwift
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               We built these tools because we were tired of paywalled calculators and clunky interfaces.
@@ -737,7 +737,7 @@ export default function LandingPage() {
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               Whether you are buying your first home, planning retirement, managing business finances,
-              or calculating taxes — FinCalcPro gives you the accurate numbers you need, instantly.
+              or calculating taxes — BillSwift gives you the accurate numbers you need, instantly.
               Every tool is designed with USA-specific rules: IRS tax brackets, FHA loan limits,
               401k contribution limits, FICA rates, and state-specific calculations.
             </p>
@@ -773,10 +773,10 @@ export default function LandingPage() {
 
           <div className="mt-16 text-center">
             <p className="text-slate-500 text-sm max-w-3xl mx-auto leading-relaxed">
-              FinCalcPro is your one-stop destination for free online financial calculators.
+              BillSWift is your one-stop destination for free online financial calculators.
               From mortgage payments and compound interest to salary conversions and tax estimates,
               every tool is designed with accuracy and simplicity in mind. Our invoice maker and
-              payslip generator help freelancers, contractors, and small business owners streamline
+              paystub generator help freelancers, contractors, and small business owners streamline
               their billing without expensive software. No signups, no subscriptions, no hidden fees —
               just powerful tools that work.
             </p>
@@ -794,7 +794,7 @@ export default function LandingPage() {
                   <Calculator className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-lg font-bold text-slate-900">
-                  FinCalc<span className="text-emerald-600">Pro</span>
+                  Bill<span className="text-emerald-600">Swift</span>
                 </span>
               </Link>
               <p className="text-sm text-slate-500 leading-relaxed">
@@ -861,7 +861,7 @@ export default function LandingPage() {
 
           <div className="border-t border-slate-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-500">
-              © 2025 FinCalcPro. All rights reserved. Free tools for the USA.
+              © 2025 BillSwift. All rights reserved. Free tools for the USA.
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-500">
               <Shield className="h-4 w-4" />

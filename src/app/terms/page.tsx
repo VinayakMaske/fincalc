@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
                 <FileText className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
-                FinCalc<span className="text-emerald-600">Pro</span>
+                Bill<span className="text-emerald-600">Swift</span>
               </span>
             </Link>
             <Link href="/" className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all">
@@ -33,7 +33,7 @@ export default function TermsOfServicePage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">Terms of Service</h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Please read these terms carefully before using FinCalcPro. By accessing or using our tools, 
+            Please read these terms carefully before using BillSwift. By accessing or using our tools, 
             you agree to be bound by these terms.
           </p>
         </div>
@@ -45,14 +45,14 @@ export default function TermsOfServicePage() {
               1. Acceptance of Terms
             </h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              By accessing, downloading, or using FinCalcPro ("the Website," "we," "us," or "our"), 
-              including but not limited to our financial calculators, invoice maker, payslip generator, 
+              By accessing, downloading, or using BillSwift ("the Website," "we," "us," or "our"), 
+              including but not limited to our financial calculators, invoice maker, paystub generator, 
               and any other tools or services offered (collectively, "the Services"), you agree to be 
               bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you must 
               not access or use the Services.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              These Terms constitute a legally binding agreement between you and FinCalcPro regarding 
+              These Terms constitute a legally binding agreement between you and BillSwift regarding 
               your use of the Services. You acknowledge that you have read, understood, and agree to 
               be bound by these Terms, as well as our Privacy Policy, which is incorporated herein by reference.
             </p>
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
               2. Description of Services
             </h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              FinCalcPro provides free online financial tools and document generators designed for users 
+              BillSwift provides free online financial tools and document generators designed for users 
               in the United States. Our Services include, but are not limited to:
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
@@ -75,7 +75,7 @@ export default function TermsOfServicePage() {
                 "Credit card payoff and ROI calculators",
                 "Refinance and rent vs. buy calculators",
                 "Professional invoice maker with PDF export",
-                "Detailed payslip generator with tax calculations",
+                "Detailed paystub generator with tax calculations",
                 "Additional financial tools as they become available",
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 bg-slate-50 rounded-xl p-4 border border-slate-200">
@@ -99,7 +99,7 @@ export default function TermsOfServicePage() {
             <div className="bg-violet-50 border border-violet-200 rounded-2xl p-6 mb-4">
               <p className="text-violet-800 font-semibold text-lg mb-2">🎉 Completely Free, No Signup</p>
               <p className="text-violet-700">
-                FinCalcPro does not require user registration, account creation, email verification, 
+                BillSwift does not require user registration, account creation, email verification, 
                 or payment information. All tools are accessible immediately without creating an account. 
                 We do not offer "premium tiers," "Pro versions," or paid subscriptions.
               </p>
@@ -119,7 +119,7 @@ export default function TermsOfServicePage() {
                 <div>
                   <p className="text-amber-800 font-semibold mb-2">Important Disclaimer</p>
                   <p className="text-amber-700 text-sm leading-relaxed">
-                    FinCalcPro provides estimates and calculations for informational purposes only. 
+                    BillSwift provides estimates and calculations for informational purposes only. 
                     While we strive for accuracy using current IRS tax brackets, federal rates, and 
                     standard formulas, <strong>we do not guarantee the accuracy, completeness, or reliability 
                     of any calculation or generated document.</strong>
@@ -155,7 +155,7 @@ export default function TermsOfServicePage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Limitation of Liability</h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              To the maximum extent permitted by applicable law, FinCalcPro and its operators shall not 
+              To the maximum extent permitted by applicable law, BillSwift and its operators shall not 
               be liable for any direct, indirect, incidental, special, consequential, or punitive damages, 
               including but not limited to:
             </p>
@@ -214,7 +214,7 @@ export default function TermsOfServicePage() {
             <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Intellectual Property</h2>
             <p className="text-slate-600 leading-relaxed mb-4">
               The Services and their original content, features, and functionality are and will remain 
-              the exclusive property of FinCalcPro and its licensors. The Services are protected by 
+              the exclusive property of BillSwift and its licensors. The Services are protected by 
               copyright, trademark, and other laws of both the United States and foreign countries.
             </p>
             <p className="text-slate-600 leading-relaxed mb-4">
@@ -224,7 +224,7 @@ export default function TermsOfServicePage() {
               may be used for any lawful purpose.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              <strong>Our Content:</strong> The FinCalcPro name, logo, website design, calculator interfaces, 
+              <strong>Our Content:</strong> The BillSwift name, logo, website design, calculator interfaces, 
               template designs, and software code are our intellectual property. You may not copy, modify, 
               distribute, or create derivative works from our proprietary content without explicit written 
               permission.
@@ -266,7 +266,7 @@ export default function TermsOfServicePage() {
             <h2 className="text-2xl font-bold text-slate-900 mb-4">11. Entire Agreement</h2>
             <p className="text-slate-600 leading-relaxed">
               These Terms, together with our Privacy Policy, constitute the entire agreement between you 
-              and FinCalcPro regarding the Services and supersede all prior agreements, understandings, 
+              and BillSwift regarding the Services and supersede all prior agreements, understandings, 
               and representations, whether written or oral.
             </p>
           </section>
@@ -279,7 +279,7 @@ export default function TermsOfServicePage() {
               </p>
               <div className="flex items-center gap-3 text-slate-700">
                 <Scale className="h-5 w-5 text-emerald-600" />
-                <span className="font-medium">legal@fincalcpro.com</span>
+                <span className="font-medium">support@billswift.com</span>
               </div>
               <p className="text-sm text-slate-500 mt-3">
                 For general inquiries, use our main contact page. Legal inquiries are typically 
@@ -290,10 +290,10 @@ export default function TermsOfServicePage() {
 
           <div className="border-t border-slate-200 pt-8 mt-10">
             <p className="text-sm text-slate-500 text-center">
-              By using FinCalcPro, you acknowledge that you have read, understood, and agree to be 
+              By using BillSwift, you acknowledge that you have read, understood, and agree to be 
               bound by these Terms of Service.
               <br />
-              © 2026 FinCalcPro. All rights reserved.
+              © 2026 BillSwift. All rights reserved.
             </p>
           </div>
         </div>

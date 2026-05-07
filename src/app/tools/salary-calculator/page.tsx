@@ -237,7 +237,7 @@ export default function SalaryCalculatorPage() {
                 <Calculator className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
-                FinCalc<span className="text-emerald-600">Pro</span>
+                Bill<span className="text-emerald-600">Swift</span>
               </span>
             </Link>
             <Link
