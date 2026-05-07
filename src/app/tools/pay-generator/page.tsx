@@ -8,7 +8,7 @@ import jsPDF from "jspdf";
 import {
   ArrowLeft, FileText, Plus, Trash2, Download, Share2, Mail, Smartphone,
   CheckCircle2, ChevronDown, X, Sparkles, Palette, Eye, PenLine, Loader2,
-  Calculator, Receipt, Star, ChevronRight, ToggleLeft, ToggleRight,
+  Calculator, Receipt, Star, ChevronRight,
 } from "lucide-react";
 
 // ─── SEO-Optimized Keywords Data ──────────────────────────────────────
