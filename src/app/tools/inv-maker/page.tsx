@@ -567,6 +567,7 @@ function InvoiceMakerContent() {
 
   const invoiceRef = useRef<HTMLDivElement>(null);
   const modalInvoiceRef = useRef<HTMLDivElement>(null);
+  const hiddenInvoiceRef = useRef<HTMLDivElement>(null);
 
   const [data, setData] = useState<InvoiceData>({
     invoiceNumber: `INV-${professionSlug.substring(0, 3).toUpperCase()}-001`,
@@ -663,7 +664,7 @@ function InvoiceMakerContent() {
   }
 
   async function downloadPDF() {
-    const blob = await generatePDF(invoiceRef);
+    const blob = await generatePDF(hiddenInvoiceRef);
     if (!blob) return;
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -676,7 +677,7 @@ function InvoiceMakerContent() {
   }
 
   async function downloadAndShareWhatsApp() {
-    const blob = await generatePDF(invoiceRef);
+    const blob = await generatePDF(hiddenInvoiceRef);
     if (!blob) return;
     const file = new File([blob], `Invoice-${data.invoiceNumber}.pdf`, { type: "application/pdf" });
     const businessName = data.fromName || "My Business";
@@ -688,7 +689,7 @@ function InvoiceMakerContent() {
   }
 
   async function downloadAndShareEmail() {
-    const blob = await generatePDF(invoiceRef);
+    const blob = await generatePDF(hiddenInvoiceRef);
     if (!blob) return;
     const file = new File([blob], `Invoice-${data.invoiceNumber}.pdf`, { type: "application/pdf" });
     const businessName = data.fromName || "My Business";
@@ -861,6 +862,9 @@ function InvoiceMakerContent() {
               </div>
             </div>
             <div className="flex-1 overflow-y-auto p-6 sm:p-8"><InvoicePreviewContent refProp={modalInvoiceRef} /></div>
+            <div className="fixed -left-[9999px] top-0 opacity-0 pointer-events-none w-[800px]">
+              <InvoicePreviewContent refProp={hiddenInvoiceRef} forPrint={true} />
+            </div>
             <div className="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
               <p className="text-sm text-slate-500">Previewing <span className="font-semibold text-slate-900">{template.name}</span> template</p>
               <div className="flex items-center gap-2">
@@ -875,7 +879,7 @@ function InvoiceMakerContent() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-5 gap-8">
           {/* ── Left: Editor ─────────────────────────────────────── */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className={`lg:col-span-2 space-y-6 ${activeTab === "preview" ? "hidden" : ""} lg:block`}>
             {/* Profession Badge */}
             {professionSlug !== "generic" && (
               <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 flex items-center gap-3">
@@ -1057,8 +1061,8 @@ function InvoiceMakerContent() {
           </div>
 
           {/* ── Right: Live Preview (Desktop Only) ───────────────── */}
-          <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24 space-y-4">
+          <div className={`lg:col-span-3 ${activeTab === "edit" ? "hidden" : ""} lg:block`}>
+            <div className="lg:sticky lg:top-24 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <h2 className="text-lg font-semibold text-slate-900">Live Preview</h2>
@@ -1071,7 +1075,7 @@ function InvoiceMakerContent() {
                   <div className="relative">
                     <button onClick={() => setIsSharing(!isSharing)} className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all"><Share2 className="h-4 w-4" />Share</button>
                     {isSharing && (
-                      <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl border border-slate-200 shadow-2xl p-3 z-50">
+                      <div className="absolute right-0 top-full mt-2 w-56 max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl p-3 z-[100]">
                         <button onClick={() => { downloadAndShareEmail(); setIsSharing(false); }} className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-700 hover:bg-blue-50 transition-colors"><Mail className="h-4 w-4 text-blue-500" />Send via Email</button>
                         <button onClick={() => { downloadAndShareWhatsApp(); setIsSharing(false); }} className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-700 hover:bg-green-50 transition-colors"><Smartphone className="h-4 w-4 text-green-500" />Share on WhatsApp</button>
                       </div>
@@ -1085,6 +1089,10 @@ function InvoiceMakerContent() {
         </div>
       </div>
 
+      {/* ── Hidden PDF Source (always rendered for mobile PDF generation) */}
+      <div className="fixed -left-[9999px] top-0 opacity-0 pointer-events-none w-[800px]">
+        <InvoicePreviewContent refProp={hiddenInvoiceRef} forPrint={true} />
+      </div>
 
       {/* ── Footer: Explore More Tools ─────────────────────────── */}
       <section className="border-t border-slate-200 bg-slate-50 py-16 sm:py-20 mt-12">
