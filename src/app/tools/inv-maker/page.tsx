@@ -1,7 +1,7 @@
 // src/app/tools/inv-maker/page.tsx
 "use client";
 
-import { useState, useRef, useMemo, useCallback, useEffect } from "react";
+import { useState, useRef, useMemo, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import html2canvas from "html2canvas";
@@ -545,6 +545,14 @@ function formatDate(d: string): string {
 
 // ─── Main Component ──────────────────────────────────────────────────
 export default function InvoiceMakerPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 flex items-center justify-center"><div className="text-slate-500">Loading invoice maker...</div></div>}>
+      <InvoiceMakerContent />
+    </Suspense>
+  );
+}
+
+function InvoiceMakerContent() {
   const searchParams = useSearchParams();
   const professionSlug = searchParams.get("profession") || "generic";
   const defaults = PROFESSION_DEFAULTS[professionSlug] || GENERIC_DEFAULTS;
