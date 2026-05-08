@@ -133,6 +133,7 @@ export default function PayslipGeneratorPage() {
 
   const payslipRef = useRef<HTMLDivElement>(null);
   const modalPayslipRef = useRef<HTMLDivElement>(null);
+  const hiddenPayslipRef = useRef<HTMLDivElement>(null);
 
   const today = new Date().toISOString().split("T")[0];
   const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
@@ -275,7 +276,7 @@ export default function PayslipGeneratorPage() {
   }
 
   async function downloadPDF() {
-    const blob = await generatePDF(payslipRef); if (!blob) return;
+    const blob = await generatePDF(hiddenPayslipRef); if (!blob) return;
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -284,7 +285,7 @@ export default function PayslipGeneratorPage() {
   }
 
   async function downloadAndShareWhatsApp() {
-    const blob = await generatePDF(payslipRef); if (!blob) return;
+    const blob = await generatePDF(hiddenPayslipRef); if (!blob) return;
     const file = new File([blob], `Payslip-${data.employeeName || "Employee"}.pdf`, { type: "application/pdf" });
     const companyName = data.companyName || "My Company";
     const text = `Hey, here is your pay stub from ${companyName}. Pay Period: ${formatDate(data.payPeriodStart)} - ${formatDate(data.payPeriodEnd)}. Net Pay: ${formatCurrency(netPay)}`;
@@ -295,7 +296,7 @@ export default function PayslipGeneratorPage() {
   }
 
   async function downloadAndShareEmail() {
-    const blob = await generatePDF(payslipRef); if (!blob) return;
+    const blob = await generatePDF(hiddenPayslipRef); if (!blob) return;
     const file = new File([blob], `Payslip-${data.employeeName || "Employee"}.pdf`, { type: "application/pdf" });
     const companyName = data.companyName || "My Company";
     const subject = `Pay Stub - ${formatDate(data.payPeriodStart)} to ${formatDate(data.payPeriodEnd)} from ${companyName}`;
@@ -558,6 +559,9 @@ export default function PayslipGeneratorPage() {
               </div>
             </div>
             <div className="flex-1 overflow-y-auto p-6 sm:p-8"><PayslipPreviewContent refProp={modalPayslipRef} /></div>
+            <div className="fixed -left-[9999px] top-0 opacity-0 pointer-events-none w-[800px]">
+              <PayslipPreviewContent refProp={hiddenPayslipRef} forPrint={true} />
+            </div>
             <div className="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
               <p className="text-sm text-slate-500">Previewing <span className="font-semibold text-slate-900">{template.name}</span> template</p>
               <div className="flex items-center gap-2">
@@ -571,7 +575,7 @@ export default function PayslipGeneratorPage() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2 space-y-6">
+          <div className={`lg:col-span-2 space-y-6 ${activeTab === "preview" ? "hidden" : ""} lg:block`}>
             {/* Company Details */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-slate-900 mb-5 flex items-center gap-2"><Sparkles className="h-5 w-5 text-emerald-600" />Company Details</h2>
@@ -812,8 +816,8 @@ export default function PayslipGeneratorPage() {
           </div>
 
           {/* ── Right: Live Preview (Desktop Only) ───────────────── */}
-          <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24 space-y-4">
+          <div className={`lg:col-span-3 ${activeTab === "edit" ? "hidden" : ""} lg:block`}>
+            <div className="lg:sticky lg:top-24 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-slate-900">Live Preview</h2>
                 <div className="flex items-center gap-2">
@@ -826,7 +830,7 @@ export default function PayslipGeneratorPage() {
                       <Share2 className="h-4 w-4" />Share
                     </button>
                     {isSharing && (
-                      <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl border border-slate-200 shadow-2xl p-3 z-50">
+                      <div className="absolute right-0 top-full mt-2 w-56 max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl p-3 z-[100]">
                         <button onClick={() => { downloadAndShareEmail(); setIsSharing(false); }} className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-700 hover:bg-blue-50 transition-colors">
                           <Mail className="h-4 w-4 text-blue-500" />Send via Email
                         </button>
@@ -842,6 +846,11 @@ export default function PayslipGeneratorPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ── Hidden PDF Source (always rendered for mobile PDF generation) */}
+      <div className="fixed -left-[9999px] top-0 opacity-0 pointer-events-none w-[800px]">
+        <PayslipPreviewContent refProp={hiddenPayslipRef} forPrint={true} />
       </div>
 
       {/* ── Footer: Explore More Tools ─────────────────────────── */}
